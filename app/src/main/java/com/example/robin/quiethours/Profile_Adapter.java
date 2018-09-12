@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.github.abdularis.civ.AvatarImageView;
@@ -56,10 +57,12 @@ public class Profile_Adapter  extends RecyclerView.Adapter<Profile_Adapter.ViewH
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
         AvatarImageView a;
+
         public ViewHolder(View inflatedView) {
             super(inflatedView);
             name = inflatedView.findViewById(R.id.ProfileName);
             a = inflatedView.findViewById(R.id.TxtImg);
+
 
             inflatedView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -80,6 +83,7 @@ public class Profile_Adapter  extends RecyclerView.Adapter<Profile_Adapter.ViewH
                     ProfileApplication.getDb().getProfileDao().deleteProfile(profile);
                     profileArrayList.remove(j);
                     notifyDataSetChanged();
+                    MainActivity.updatebg(profileArrayList);
                     return true;
                 }
             });

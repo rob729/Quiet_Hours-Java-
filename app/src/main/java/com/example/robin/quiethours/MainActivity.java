@@ -1,6 +1,8 @@
 package com.example.robin.quiethours;
 
 import android.app.NotificationManager;
+import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.MutableLiveData;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -13,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
@@ -21,10 +24,12 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<Profile> al = new ArrayList<>();
     RecyclerView rv;
+    static RelativeLayout rleb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        rleb = findViewById(R.id.emrl);
         rv = findViewById(R.id.rv);
         rv.setLayoutManager(new LinearLayoutManager(getBaseContext()));
 
@@ -53,7 +58,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         al = (ArrayList<Profile>) ProfileApplication.getDb().getProfileDao().getAllProfile();
+
         if (al != null){
+
+            if (al.size()==0)
+                rleb.setVisibility(View.VISIBLE);
+
+            else
+                rleb.setVisibility(View.GONE);
             Profile_Adapter profile_adapter = new Profile_Adapter(MainActivity.this,al);
             rv.setAdapter(profile_adapter);
         }
@@ -82,5 +94,15 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
 
         return super.onOptionsItemSelected(item);
+    }
+    public static void updatebg(ArrayList<Profile> al){
+        if (al != null) {
+
+            if (al.size() == 0)
+                rleb.setVisibility(View.VISIBLE);
+
+            else
+                rleb.setVisibility(View.GONE);
+        }
     }
 }
