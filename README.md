@@ -1,4 +1,5 @@
 # Quiet Hours
+![Build Status](https://travis-ci.org/rob729/Quiet_Hours.svg?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ed4f1f295c5a4e8c86ba4db14f8a9ba8)](https://app.codacy.com/app/rob729/Quiet_Hours?utm_source=github.com&utm_medium=referral&utm_content=rob729/Quiet_Hours&utm_campaign=Badge_Grade_Dashboard)
 [![Platform](https://img.shields.io/badge/platform-android-blue.svg)](http://developer.android.com/index.html)
 [![API](https://img.shields.io/badge/API-19%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=19)
